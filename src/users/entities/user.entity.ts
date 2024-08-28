@@ -1,16 +1,49 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User {
+export class Users {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  firstName: string;
+  name: string;
 
   @Column()
-  lastName: string;
+  email: string;
 
-  @Column({ default: true })
-  isActive: boolean;
+  @Column()
+  passwordHash: string;
+
+  @Column()
+  createdAt: Date;
+
+  @Column()
+  updatedAt: Date;
+
+  @Column()
+  profile: string;
+
+  @Column()
+  tokenVersion: number;
+
+  @Column()
+  companyId: number;
+
+  @Column()
+  super: number;
+
+  @Column()
+  whatsappId: number;
+
+  @Column()
+  phone: string;
+
+  @Column()
+  photo: string;
+
+  @Column()
+  plan: string;
+
+  @Column()
+  message: string;
 }

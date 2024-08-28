@@ -4,9 +4,9 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TesteModule } from './teste/teste.module';
-import { User } from './users/entities/user.entity';
-import { WebsocketModule } from './websocket/websocket.module';
+import { Users } from './users/entities/user.entity';
+import { TicketTrakingModule } from './ticket-traking/ticket-traking.module';
+import { TicketTraking } from './ticket-traking/entities/ticket-traking.entity';
 
 @Module({
   imports: [
@@ -18,12 +18,11 @@ import { WebsocketModule } from './websocket/websocket.module';
       port: 3306,
       username: 'root',
       password: '1234',
-      database: 'test',
-      entities: [User],
-      synchronize: true, // não usar true em produção
+      database: 'xama2',
+      entities: [Users, TicketTraking],
+      synchronize: false, // não usar true em produção
     }),
-    TesteModule,
-    WebsocketModule,
+    TicketTrakingModule,
   ],
   controllers: [AppController],
   providers: [AppService],
