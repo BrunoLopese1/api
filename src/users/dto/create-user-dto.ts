@@ -1,5 +1,5 @@
 export interface CreateUserDto {
-    fistName: string,
-    lastName: string,
-    isActive: boolean
+  fistName: string;
+  lastName: string;
+  isActive: boolean;
 }

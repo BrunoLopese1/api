@@ -9,11 +9,11 @@ async function bootstrap() {
   //await repl(AppModule);
 
   const config = new DocumentBuilder()
-  .setTitle('Rotas')
-  .setDescription('Documentação da API')
-  .setVersion('1.0')
-  .addTag('API')
-  .build();
+    .setTitle('Rotas')
+    .setDescription('Documentação da API')
+    .setVersion('1.0')
+    .addTag('API')
+    .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

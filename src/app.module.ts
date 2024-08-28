@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { TypeOrmModule } from '@nestjs/typeorm'
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { TesteModule } from './teste/teste.module';
 import { User } from './users/entities/user.entity';
 import { WebsocketModule } from './websocket/websocket.module';
@@ -19,9 +19,7 @@ import { WebsocketModule } from './websocket/websocket.module';
       username: 'root',
       password: '1234',
       database: 'test',
-      entities: [
-        User
-      ],
+      entities: [User],
       synchronize: true, // não usar true em produção
     }),
     TesteModule,
