@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { SettingsSupportService } from './settings-support.service';
 import { CreateSettingsSupportDto } from './dto/create-settings-support.dto';
 import { UpdateSettingsSupportDto } from './dto/update-settings-support.dto';
 
 @Controller('settings-support')
 export class SettingsSupportController {
-  constructor(private readonly settingsSupportService: SettingsSupportService) {}
+  constructor(
+    private readonly settingsSupportService: SettingsSupportService,
+  ) {}
 
   @Post()
   create(@Body() createSettingsSupportDto: CreateSettingsSupportDto) {
@@ -23,7 +33,10 @@ export class SettingsSupportController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSettingsSupportDto: UpdateSettingsSupportDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateSettingsSupportDto: UpdateSettingsSupportDto,
+  ) {
     return this.settingsSupportService.update(+id, updateSettingsSupportDto);
   }
 

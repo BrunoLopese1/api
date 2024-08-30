@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { FilesOptionsService } from './files-options.service';
 import { CreateFilesOptionDto } from './dto/create-files-option.dto';
 import { UpdateFilesOptionDto } from './dto/update-files-option.dto';
@@ -23,7 +31,10 @@ export class FilesOptionsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFilesOptionDto: UpdateFilesOptionDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateFilesOptionDto: UpdateFilesOptionDto,
+  ) {
     return this.filesOptionsService.update(+id, updateFilesOptionDto);
   }
 

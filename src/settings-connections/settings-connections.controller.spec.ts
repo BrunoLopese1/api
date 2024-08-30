@@ -11,7 +11,9 @@ describe('SettingsConnectionsController', () => {
       providers: [SettingsConnectionsService],
     }).compile();
 
-    controller = module.get<SettingsConnectionsController>(SettingsConnectionsController);
+    controller = module.get<SettingsConnectionsController>(
+      SettingsConnectionsController,
+    );
   });
 
   it('should be defined', () => {

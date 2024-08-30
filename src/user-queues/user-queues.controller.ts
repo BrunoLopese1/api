@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { UserQueuesService } from './user-queues.service';
 import { CreateUserQueueDto } from './dto/create-user-queue.dto';
 import { UpdateUserQueueDto } from './dto/update-user-queue.dto';
@@ -23,7 +31,10 @@ export class UserQueuesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserQueueDto: UpdateUserQueueDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateUserQueueDto: UpdateUserQueueDto,
+  ) {
     return this.userQueuesService.update(+id, updateUserQueueDto);
   }
 

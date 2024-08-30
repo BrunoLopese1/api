@@ -11,7 +11,9 @@ describe('QueueIntegrationsController', () => {
       providers: [QueueIntegrationsService],
     }).compile();
 
-    controller = module.get<QueueIntegrationsController>(QueueIntegrationsController);
+    controller = module.get<QueueIntegrationsController>(
+      QueueIntegrationsController,
+    );
   });
 
   it('should be defined', () => {

@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { CampaignSettingsService } from './campaign-settings.service';
 import { CreateCampaignSettingDto } from './dto/create-campaign-setting.dto';
 import { UpdateCampaignSettingDto } from './dto/update-campaign-setting.dto';
 
 @Controller('campaign-settings')
 export class CampaignSettingsController {
-  constructor(private readonly campaignSettingsService: CampaignSettingsService) {}
+  constructor(
+    private readonly campaignSettingsService: CampaignSettingsService,
+  ) {}
 
   @Post()
   create(@Body() createCampaignSettingDto: CreateCampaignSettingDto) {
@@ -23,7 +33,10 @@ export class CampaignSettingsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCampaignSettingDto: UpdateCampaignSettingDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateCampaignSettingDto: UpdateCampaignSettingDto,
+  ) {
     return this.campaignSettingsService.update(+id, updateCampaignSettingDto);
   }
 

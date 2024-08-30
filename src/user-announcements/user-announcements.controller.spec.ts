@@ -11,7 +11,9 @@ describe('UserAnnouncementsController', () => {
       providers: [UserAnnouncementsService],
     }).compile();
 
-    controller = module.get<UserAnnouncementsController>(UserAnnouncementsController);
+    controller = module.get<UserAnnouncementsController>(
+      UserAnnouncementsController,
+    );
   });
 
   it('should be defined', () => {

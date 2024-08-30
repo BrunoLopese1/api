@@ -9,7 +9,9 @@ describe('ContactCustomFieldsService', () => {
       providers: [ContactCustomFieldsService],
     }).compile();
 
-    service = module.get<ContactCustomFieldsService>(ContactCustomFieldsService);
+    service = module.get<ContactCustomFieldsService>(
+      ContactCustomFieldsService,
+    );
   });
 
   it('should be defined', () => {

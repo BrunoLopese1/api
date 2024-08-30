@@ -9,7 +9,9 @@ describe('SettingsConnectionsService', () => {
       providers: [SettingsConnectionsService],
     }).compile();
 
-    service = module.get<SettingsConnectionsService>(SettingsConnectionsService);
+    service = module.get<SettingsConnectionsService>(
+      SettingsConnectionsService,
+    );
   });
 
   it('should be defined', () => {

@@ -9,7 +9,9 @@ describe('TemplatesConnectionsService', () => {
       providers: [TemplatesConnectionsService],
     }).compile();
 
-    service = module.get<TemplatesConnectionsService>(TemplatesConnectionsService);
+    service = module.get<TemplatesConnectionsService>(
+      TemplatesConnectionsService,
+    );
   });
 
   it('should be defined', () => {

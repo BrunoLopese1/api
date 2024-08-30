@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { UserAnnouncementsService } from './user-announcements.service';
 import { CreateUserAnnouncementDto } from './dto/create-user-announcement.dto';
 import { UpdateUserAnnouncementDto } from './dto/update-user-announcement.dto';
 
 @Controller('user-announcements')
 export class UserAnnouncementsController {
-  constructor(private readonly userAnnouncementsService: UserAnnouncementsService) {}
+  constructor(
+    private readonly userAnnouncementsService: UserAnnouncementsService,
+  ) {}
 
   @Post()
   create(@Body() createUserAnnouncementDto: CreateUserAnnouncementDto) {
@@ -23,7 +33,10 @@ export class UserAnnouncementsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserAnnouncementDto: UpdateUserAnnouncementDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateUserAnnouncementDto: UpdateUserAnnouncementDto,
+  ) {
     return this.userAnnouncementsService.update(+id, updateUserAnnouncementDto);
   }
 

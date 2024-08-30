@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { BaileysChatsService } from './baileys-chats.service';
 import { CreateBaileysChatDto } from './dto/create-baileys-chat.dto';
 import { UpdateBaileysChatDto } from './dto/update-baileys-chat.dto';
@@ -23,7 +31,10 @@ export class BaileysChatsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBaileysChatDto: UpdateBaileysChatDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateBaileysChatDto: UpdateBaileysChatDto,
+  ) {
     return this.baileysChatsService.update(+id, updateBaileysChatDto);
   }
 

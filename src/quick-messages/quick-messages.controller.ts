@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { QuickMessagesService } from './quick-messages.service';
 import { CreateQuickMessageDto } from './dto/create-quick-message.dto';
 import { UpdateQuickMessageDto } from './dto/update-quick-message.dto';
@@ -23,7 +31,10 @@ export class QuickMessagesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateQuickMessageDto: UpdateQuickMessageDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateQuickMessageDto: UpdateQuickMessageDto,
+  ) {
     return this.quickMessagesService.update(+id, updateQuickMessageDto);
   }
 

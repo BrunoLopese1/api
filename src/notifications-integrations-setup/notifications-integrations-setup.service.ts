@@ -4,7 +4,9 @@ import { UpdateNotificationsIntegrationsSetupDto } from './dto/update-notificati
 
 @Injectable()
 export class NotificationsIntegrationsSetupService {
-  create(createNotificationsIntegrationsSetupDto: CreateNotificationsIntegrationsSetupDto) {
+  create(
+    createNotificationsIntegrationsSetupDto: CreateNotificationsIntegrationsSetupDto,
+  ) {
     return 'This action adds a new notificationsIntegrationsSetup';
   }
 
@@ -16,7 +18,10 @@ export class NotificationsIntegrationsSetupService {
     return `This action returns a #${id} notificationsIntegrationsSetup`;
   }
 
-  update(id: number, updateNotificationsIntegrationsSetupDto: UpdateNotificationsIntegrationsSetupDto) {
+  update(
+    id: number,
+    updateNotificationsIntegrationsSetupDto: UpdateNotificationsIntegrationsSetupDto,
+  ) {
     return `This action updates a #${id} notificationsIntegrationsSetup`;
   }
 

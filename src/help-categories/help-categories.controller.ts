@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { HelpCategoriesService } from './help-categories.service';
 import { CreateHelpCategoryDto } from './dto/create-help-category.dto';
 import { UpdateHelpCategoryDto } from './dto/update-help-category.dto';
@@ -23,7 +31,10 @@ export class HelpCategoriesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateHelpCategoryDto: UpdateHelpCategoryDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateHelpCategoryDto: UpdateHelpCategoryDto,
+  ) {
     return this.helpCategoriesService.update(+id, updateHelpCategoryDto);
   }
 

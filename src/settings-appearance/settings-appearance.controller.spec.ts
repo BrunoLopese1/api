@@ -11,7 +11,9 @@ describe('SettingsAppearanceController', () => {
       providers: [SettingsAppearanceService],
     }).compile();
 
-    controller = module.get<SettingsAppearanceController>(SettingsAppearanceController);
+    controller = module.get<SettingsAppearanceController>(
+      SettingsAppearanceController,
+    );
   });
 
   it('should be defined', () => {

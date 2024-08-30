@@ -11,7 +11,9 @@ describe('SettingsSupportController', () => {
       providers: [SettingsSupportService],
     }).compile();
 
-    controller = module.get<SettingsSupportController>(SettingsSupportController);
+    controller = module.get<SettingsSupportController>(
+      SettingsSupportController,
+    );
   });
 
   it('should be defined', () => {

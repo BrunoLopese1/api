@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ReasonForTransferService } from './reason-for-transfer.service';
 import { CreateReasonForTransferDto } from './dto/create-reason-for-transfer.dto';
 import { UpdateReasonForTransferDto } from './dto/update-reason-for-transfer.dto';
 
 @Controller('reason-for-transfer')
 export class ReasonForTransferController {
-  constructor(private readonly reasonForTransferService: ReasonForTransferService) {}
+  constructor(
+    private readonly reasonForTransferService: ReasonForTransferService,
+  ) {}
 
   @Post()
   create(@Body() createReasonForTransferDto: CreateReasonForTransferDto) {
@@ -23,8 +33,14 @@ export class ReasonForTransferController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateReasonForTransferDto: UpdateReasonForTransferDto) {
-    return this.reasonForTransferService.update(+id, updateReasonForTransferDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateReasonForTransferDto: UpdateReasonForTransferDto,
+  ) {
+    return this.reasonForTransferService.update(
+      +id,
+      updateReasonForTransferDto,
+    );
   }
 
   @Delete(':id')

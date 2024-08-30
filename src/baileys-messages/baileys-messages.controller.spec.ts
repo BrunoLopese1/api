@@ -11,7 +11,9 @@ describe('BaileysMessagesController', () => {
       providers: [BaileysMessagesService],
     }).compile();
 
-    controller = module.get<BaileysMessagesController>(BaileysMessagesController);
+    controller = module.get<BaileysMessagesController>(
+      BaileysMessagesController,
+    );
   });
 
   it('should be defined', () => {

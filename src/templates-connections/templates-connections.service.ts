@@ -16,7 +16,10 @@ export class TemplatesConnectionsService {
     return `This action returns a #${id} templatesConnection`;
   }
 
-  update(id: number, updateTemplatesConnectionDto: UpdateTemplatesConnectionDto) {
+  update(
+    id: number,
+    updateTemplatesConnectionDto: UpdateTemplatesConnectionDto,
+  ) {
     return `This action updates a #${id} templatesConnection`;
   }
 

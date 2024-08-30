@@ -11,7 +11,9 @@ describe('ContactCustomFieldsController', () => {
       providers: [ContactCustomFieldsService],
     }).compile();
 
-    controller = module.get<ContactCustomFieldsController>(ContactCustomFieldsController);
+    controller = module.get<ContactCustomFieldsController>(
+      ContactCustomFieldsController,
+    );
   });
 
   it('should be defined', () => {

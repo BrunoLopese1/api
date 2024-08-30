@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ContactCustomFieldsService } from './contact-custom-fields.service';
 import { CreateContactCustomFieldDto } from './dto/create-contact-custom-field.dto';
 import { UpdateContactCustomFieldDto } from './dto/update-contact-custom-field.dto';
 
 @Controller('contact-custom-fields')
 export class ContactCustomFieldsController {
-  constructor(private readonly contactCustomFieldsService: ContactCustomFieldsService) {}
+  constructor(
+    private readonly contactCustomFieldsService: ContactCustomFieldsService,
+  ) {}
 
   @Post()
   create(@Body() createContactCustomFieldDto: CreateContactCustomFieldDto) {
@@ -23,8 +33,14 @@ export class ContactCustomFieldsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateContactCustomFieldDto: UpdateContactCustomFieldDto) {
-    return this.contactCustomFieldsService.update(+id, updateContactCustomFieldDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateContactCustomFieldDto: UpdateContactCustomFieldDto,
+  ) {
+    return this.contactCustomFieldsService.update(
+      +id,
+      updateContactCustomFieldDto,
+    );
   }
 
   @Delete(':id')

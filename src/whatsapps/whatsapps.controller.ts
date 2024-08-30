@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { WhatsappsService } from './whatsapps.service';
 import { CreateWhatsappDto } from './dto/create-whatsapp.dto';
 import { UpdateWhatsappDto } from './dto/update-whatsapp.dto';
@@ -23,7 +31,10 @@ export class WhatsappsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateWhatsappDto: UpdateWhatsappDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateWhatsappDto: UpdateWhatsappDto,
+  ) {
     return this.whatsappsService.update(+id, updateWhatsappDto);
   }
 

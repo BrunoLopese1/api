@@ -16,7 +16,10 @@ export class NotificationsIntegrationsService {
     return `This action returns a #${id} notificationsIntegration`;
   }
 
-  update(id: number, updateNotificationsIntegrationDto: UpdateNotificationsIntegrationDto) {
+  update(
+    id: number,
+    updateNotificationsIntegrationDto: UpdateNotificationsIntegrationDto,
+  ) {
     return `This action updates a #${id} notificationsIntegration`;
   }
 

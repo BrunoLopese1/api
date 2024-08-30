@@ -11,7 +11,9 @@ describe('ValidationCodesController', () => {
       providers: [ValidationCodesService],
     }).compile();
 
-    controller = module.get<ValidationCodesController>(ValidationCodesController);
+    controller = module.get<ValidationCodesController>(
+      ValidationCodesController,
+    );
   });
 
   it('should be defined', () => {

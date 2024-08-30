@@ -11,7 +11,9 @@ describe('ReasonForTransferController', () => {
       providers: [ReasonForTransferService],
     }).compile();
 
-    controller = module.get<ReasonForTransferController>(ReasonForTransferController);
+    controller = module.get<ReasonForTransferController>(
+      ReasonForTransferController,
+    );
   });
 
   it('should be defined', () => {

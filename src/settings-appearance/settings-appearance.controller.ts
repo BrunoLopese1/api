@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { SettingsAppearanceService } from './settings-appearance.service';
 import { CreateSettingsAppearanceDto } from './dto/create-settings-appearance.dto';
 import { UpdateSettingsAppearanceDto } from './dto/update-settings-appearance.dto';
 
 @Controller('settings-appearance')
 export class SettingsAppearanceController {
-  constructor(private readonly settingsAppearanceService: SettingsAppearanceService) {}
+  constructor(
+    private readonly settingsAppearanceService: SettingsAppearanceService,
+  ) {}
 
   @Post()
   create(@Body() createSettingsAppearanceDto: CreateSettingsAppearanceDto) {
@@ -23,8 +33,14 @@ export class SettingsAppearanceController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSettingsAppearanceDto: UpdateSettingsAppearanceDto) {
-    return this.settingsAppearanceService.update(+id, updateSettingsAppearanceDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateSettingsAppearanceDto: UpdateSettingsAppearanceDto,
+  ) {
+    return this.settingsAppearanceService.update(
+      +id,
+      updateSettingsAppearanceDto,
+    );
   }
 
   @Delete(':id')

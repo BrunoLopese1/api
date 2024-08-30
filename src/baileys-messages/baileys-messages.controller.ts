@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { BaileysMessagesService } from './baileys-messages.service';
 import { CreateBaileysMessageDto } from './dto/create-baileys-message.dto';
 import { UpdateBaileysMessageDto } from './dto/update-baileys-message.dto';
 
 @Controller('baileys-messages')
 export class BaileysMessagesController {
-  constructor(private readonly baileysMessagesService: BaileysMessagesService) {}
+  constructor(
+    private readonly baileysMessagesService: BaileysMessagesService,
+  ) {}
 
   @Post()
   create(@Body() createBaileysMessageDto: CreateBaileysMessageDto) {
@@ -23,7 +33,10 @@ export class BaileysMessagesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBaileysMessageDto: UpdateBaileysMessageDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateBaileysMessageDto: UpdateBaileysMessageDto,
+  ) {
     return this.baileysMessagesService.update(+id, updateBaileysMessageDto);
   }
 

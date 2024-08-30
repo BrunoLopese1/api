@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { TwilioConfigsService } from './twilio-configs.service';
 import { CreateTwilioConfigDto } from './dto/create-twilio-config.dto';
 import { UpdateTwilioConfigDto } from './dto/update-twilio-config.dto';
@@ -23,7 +31,10 @@ export class TwilioConfigsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTwilioConfigDto: UpdateTwilioConfigDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateTwilioConfigDto: UpdateTwilioConfigDto,
+  ) {
     return this.twilioConfigsService.update(+id, updateTwilioConfigDto);
   }
 

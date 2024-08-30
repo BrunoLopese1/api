@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { QueueOptionsService } from './queue-options.service';
 import { CreateQueueOptionDto } from './dto/create-queue-option.dto';
 import { UpdateQueueOptionDto } from './dto/update-queue-option.dto';
@@ -23,7 +31,10 @@ export class QueueOptionsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateQueueOptionDto: UpdateQueueOptionDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateQueueOptionDto: UpdateQueueOptionDto,
+  ) {
     return this.queueOptionsService.update(+id, updateQueueOptionDto);
   }
 

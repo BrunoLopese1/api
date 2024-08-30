@@ -11,7 +11,9 @@ describe('TemplatesConnectionsController', () => {
       providers: [TemplatesConnectionsService],
     }).compile();
 
-    controller = module.get<TemplatesConnectionsController>(TemplatesConnectionsController);
+    controller = module.get<TemplatesConnectionsController>(
+      TemplatesConnectionsController,
+    );
   });
 
   it('should be defined', () => {

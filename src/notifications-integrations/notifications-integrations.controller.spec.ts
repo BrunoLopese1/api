@@ -11,7 +11,9 @@ describe('NotificationsIntegrationsController', () => {
       providers: [NotificationsIntegrationsService],
     }).compile();
 
-    controller = module.get<NotificationsIntegrationsController>(NotificationsIntegrationsController);
+    controller = module.get<NotificationsIntegrationsController>(
+      NotificationsIntegrationsController,
+    );
   });
 
   it('should be defined', () => {

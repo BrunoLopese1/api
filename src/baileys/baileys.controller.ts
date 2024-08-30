@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { BaileysService } from './baileys.service';
 import { CreateBaileyDto } from './dto/create-bailey.dto';
 import { UpdateBaileyDto } from './dto/update-bailey.dto';
