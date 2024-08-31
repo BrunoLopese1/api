@@ -1,1 +1,51 @@
-export class Campaign {}
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+export class Campaign {
+    @PrimaryGeneratedColumn()
+    id: number;
+    @Column()
+    message1:string;
+    @Column()
+    message2:string;
+    @Column()
+    message3:string;
+    @Column()
+    message4:string;
+    @Column()
+    message5:string;
+    @Column()
+    confirmationMessage1:string;
+    @Column()
+    confirmationMessage2:string;
+    @Column()
+    confirmationMessage3:string;
+    @Column()
+    confirmationMessage4:string;
+    @Column()
+    confirmationMessage5:string;
+    @Column()
+    status:string;
+    @Column()
+    confirmation:boolean;
+    @Column()
+    mediaPath:string;
+    @Column()
+    mediaName:string;
+    @Column()
+    companyId:number;
+    @Column()
+    contactListId:number;
+    @Column()
+    whatsappId:number;
+    @Column()
+    scheduleAt:Date;
+    @Column()
+    completedAt:Date;
+    @Column()
+    createdAt:Date;
+    @Column()
+    updatedAt:Date;
+    @Column()
+    fileListId:number;
+    @Column()
+    templateId:number;
+}
