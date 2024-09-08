@@ -1,6 +1,8 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
+import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { Response } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -10,16 +12,31 @@ export class AuthService {
   ) {}
 
   async signIn(
-    username: string,
-    pass: string,
-  ): Promise<{ access_token: string }> {
-    const user = await this.usersService.findOneOlder(username);
-    if (user?.password !== pass) {
-      throw new UnauthorizedException();
+    email: string,
+    password: string,
+    res: Response,
+  ): Promise<void> {
+    const user = await this.usersService.findOneByEmail(email);
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials');
     }
-    const payload = { sub: user.userId, username: user.username };
-    return {
-      access_token: await this.jwtService.signAsync(payload),
-    };
+
+    const isPasswordMatch = await bcrypt.compare(password, user.passwordHash);
+    if (!isPasswordMatch) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    const payload = { sub: user.id, username: user.name, companyId: user.companyId };
+    const accessToken = await this.jwtService.signAsync(payload);
+
+    res.cookie('Authentication', accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // Habilitar em produção se estiver usando HTTPS
+      sameSite: 'strict',
+    });
+
+    const { passwordHash, ...result } = user;
+
+    res.send({result, accessToken});
   }
 }

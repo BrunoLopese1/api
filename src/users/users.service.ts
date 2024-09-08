@@ -4,35 +4,12 @@ import { Repository } from 'typeorm';
 import { Users } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user-dto';
 
-interface UserOlder {
-  userId: number;
-  username: string;
-  password: string;
-}
-
 @Injectable()
 export class UsersService {
-  private readonly users = [
-    {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
-    },
-  ];
-
   constructor(
     @InjectRepository(Users)
     private usersRepository: Repository<Users>,
   ) {}
-
-  async findOneOlder(username: string): Promise<UserOlder | undefined> {
-    return this.users.find((user) => user.username === username);
-  }
 
   async createUser(createUserDto: CreateUserDto): Promise<Users> {
     const user = this.usersRepository.save(createUserDto);
@@ -43,8 +20,9 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  findOne(id: number): Promise<Users | null> {
-    return this.usersRepository.findOneBy({ id });
+  async findOneByEmail(email: string): Promise<Users | null> {
+    const user = await this.usersRepository.findOneBy({email});
+    return user
   }
 
   async remove(id: number): Promise<void> {
