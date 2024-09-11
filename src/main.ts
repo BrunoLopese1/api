@@ -1,22 +1,17 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { cors: true });
-  app.enableCors();
+  const app = await NestFactory.create(AppModule);
+  app.use(cookieParser());
 
-  //await repl(AppModule);
-
-  const config = new DocumentBuilder()
-    .setTitle('Rotas')
-    .setDescription('Documentação da API')
-    .setVersion('1.0')
-    .addTag('API')
-    .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  // Permitir a aplicação Vite acessar a API Nest
+  app.enableCors({
+    origin: 'http://localhost:5173', // URL da aplicação Vite
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true, // Se estiver usando cookies ou autenticação
+  });
 
   await app.listen(3000);
 }
