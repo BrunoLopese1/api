@@ -6,13 +6,20 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(cookieParser());
 
-  // Permitir a aplicação Vite acessar a API Nest
   app.enableCors({
-    origin: 'http://localhost:5173', // URL da aplicação Vite
+    origin: (origin, callback) => {
+      const allowedOrigins = ['http://127.0.0.1:5173', 'http://localhost:5173'];
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true, // Se estiver usando cookies ou autenticação
+    credentials: true,
   });
 
   await app.listen(3000);
 }
 bootstrap();
+

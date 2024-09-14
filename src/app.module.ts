@@ -63,6 +63,7 @@ import { UserRatingsModule } from './user-ratings/user-ratings.module';
 import { ValidationCodesModule } from './validation-codes/validation-codes.module';
 import { WhatsappQueuesModule } from './whatsapp-queues/whatsapp-queues.module';
 import { WhatsappsModule } from './whatsapps/whatsapps.module';
+import { Tags } from './tags/entities/tag.entity';
 
 @Module({
   imports: [
@@ -74,8 +75,8 @@ import { WhatsappsModule } from './whatsapps/whatsapps.module';
       port: 3306,
       username: 'root',
       password: '1234',
-      database: 'xama3',
-      entities: [Users, TicketTraking],
+      database: 'xama',
+      entities: [Users, TicketTraking,Tags],
       synchronize: false,
     }),
     TicketTrakingModule,
