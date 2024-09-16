@@ -11,24 +11,38 @@ export class TagsService {
     @InjectRepository(Tags)
     private tagsRepository: Repository<Tags>,
   ) {}
-  
+
   create(createTagDto: CreateTagDto) {
-    return 'This action adds a new tag';
+    const tag = this.tagsRepository.create(createTagDto);
+    return this.tagsRepository.save(tag);
   }
 
-  findAll() {
-    return this.tagsRepository.find();
+  async findAll(page: number, take: number): Promise<Tags[]> {
+    const [tags, total] = await this.tagsRepository.findAndCount({
+      skip: (page - 1) * take,
+      take,
+    });
+
+    return tags;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} tag`;
+    return this.tagsRepository.findOneBy({ id });
   }
 
-  update(id: number, updateTagDto: UpdateTagDto) {
-    return `This action updates a #${id} tag`;
+  async update(id: number, updateTagDto: UpdateTagDto): Promise<Tags> {
+    const tag = await this.tagsRepository.findOne({ where: { id } });
+
+    if (!tag) {
+      throw new Error('Tag não encontrada');
+    }
+
+    Object.assign(tag, updateTagDto);
+
+    return this.tagsRepository.save(tag);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} tag`;
+    return this.tagsRepository.delete(id);
   }
 }
